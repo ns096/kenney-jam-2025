@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=8 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" uid="uid://ovjegpk30m4h" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
+[ext_resource type="Texture2D" uid="uid://dd3r3bfxcr5wt" path="res://assets/1bit_roguelike/Tiles/Colored/tile_0017.png" id="2_5jhce"]
 [ext_resource type="PackedScene" uid="uid://n50dl07nkkvc" path="res://scenes/enemies/basic_enemy.tscn" id="2_2577t"]
 [ext_resource type="PackedScene" uid="uid://gjf6f4intti3" path="res://scenes/arm/arm.tscn" id="3_5jhce"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="3_8o178"]
@@ -9,6 +10,12 @@
 
 [node name="IngameScene" type="Node2D"]
 script = ExtResource("1_objyc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.687215, 0.687215, 0.687215, 1)
+position = Vector2(283.5, 166.5)
+scale = Vector2(78.625, 47.375)
+texture = ExtResource("2_5jhce")
 
 [node name="Enemy" parent="." instance=ExtResource("2_2577t")]
 position = Vector2(195, 59)

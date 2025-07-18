@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://gjf6f4intti3"]
+[gd_scene load_steps=11 format=3 uid="uid://gjf6f4intti3"]
 
 [ext_resource type="Script" uid="uid://cmeu2nv1jgo0o" path="res://scenes/arm/arm.gd" id="1_shvsc"]
 [ext_resource type="Texture2D" uid="uid://csqsa8xcvytj" path="res://assets/monster_builder/PNG/Default/arm_whiteB.png" id="2_hald4"]
@@ -27,7 +27,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(1, 1)]
+"values": [Vector2(0.5, 0.5)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -39,7 +39,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [1000.0]
 }
 
 [sub_resource type="Animation" id="Animation_hald4"]
@@ -102,34 +102,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_k1ffn"]
-resource_name = "grow"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 2),
-"transitions": PackedFloat32Array(8, 3, 3),
-"update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.3, 0.3), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:damage_factor")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 1.98),
-"transitions": PackedFloat32Array(8, 3, 3),
-"update": 0,
-"values": [1, 1, 2000.0]
-}
-
 [sub_resource type="Animation" id="Animation_sbl86"]
 resource_name = "grow_2"
 length = 2.0
@@ -158,16 +130,103 @@ tracks/1/keys = {
 "values": [1, 1, 10000.0]
 }
 
+[sub_resource type="Animation" id="Animation_y6ys1"]
+resource_name = "grow_3"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1.2, 3),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:damage_factor")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.98),
+"transitions": PackedFloat32Array(1, 3, 3),
+"update": 0,
+"values": [100.0, 1000.0, 2000.0]
+}
+
+[sub_resource type="Animation" id="Animation_k1ffn"]
+resource_name = "grow_0"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:damage_factor")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1000.0]
+}
+
+[sub_resource type="Animation" id="Animation_notly"]
+resource_name = "grow_1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1.2, 3),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:damage_factor")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.98),
+"transitions": PackedFloat32Array(1, 3, 3),
+"update": 0,
+"values": [100.0, 1000.0, 2000.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1ffn"]
 _data = {
 &"RESET": SubResource("Animation_ftcvs"),
 &"basic_strike": SubResource("Animation_hald4"),
 &"big_strike": SubResource("Animation_fvybe"),
-&"grow": SubResource("Animation_k1ffn"),
-&"grow_2": SubResource("Animation_sbl86")
+&"grow_0": SubResource("Animation_k1ffn"),
+&"grow_1": SubResource("Animation_notly"),
+&"grow_2": SubResource("Animation_sbl86"),
+&"grow_3": SubResource("Animation_y6ys1")
 }
 
 [node name="Arm" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_shvsc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
