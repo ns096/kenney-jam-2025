@@ -8,8 +8,12 @@ var max_health = 15
 var reward_xp = 2
 var regeneration = 0
 
+@export var hurtable = true
+
 @export var enemies_0: Array[Texture2D] = []
 @export var enemies_1: Array[Texture2D] = []
+@export var enemies_2: Array[Texture2D] = []
+@export var enemies_3: Array[Texture2D] = []
 
 var current_threat_level = 0
 
@@ -40,15 +44,29 @@ func spawn_next(anim):
 func setup_enemy(threat_level: int):
 	match threat_level:
 		0:
+			$SizeControl.scale = Vector2(12,12)
 			get_enemy_sprite(enemies_0)
 			set_health(35)
 			reward_xp = 3
 			regeneration = 0
 		1:
+			$SizeControl.scale = Vector2(15,15)
 			get_enemy_sprite(enemies_1)
 			set_health(50)
 			reward_xp = 6
 			regeneration = 3
+		2:
+			$SizeControl.scale = Vector2(19,19)
+			get_enemy_sprite(enemies_2)
+			set_health(max_health + 50)
+			reward_xp = 10
+			regeneration = 10
+		3:
+			$SizeControl.scale = Vector2(24,24)
+			get_enemy_sprite(enemies_3)
+			set_health(max_health + 100)
+			reward_xp = 10
+			regeneration = 10
 
 func set_health(health):
 		max_health = health

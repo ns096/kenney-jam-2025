@@ -15,14 +15,29 @@ var MAX_POS = Vector2(467.0,2.0)
 var MAX_SCALE = Vector2(4,4)
 
 
+var old_scale = scale
+@export var scale_anim = Vector2.ONE:
+	set(val):
+		scale_anim = val
+		scale = old_scale * scale_anim
+
+
+
 # TODO find good balancing
-var base_damage = 7.0
+@export var base_damage = 7.0 :
+	get:
+		return base_damage
+	set(val):
+		Globals.base_damage = val
+		base_damage = val
+		print("set base damage", base_damage)
+
 var growth_level = 0
 
 var current_arm = 0
 
 # multiply and then scale back later from 500 to 5, because the animation player is fucky wucky
-@export_range(1.0,10000.0,0.5) var damage_factor = 1000.0
+@export_range(1.0,1000000.0,0.5) var damage_factor = 1000.0
 
 signal strike_finished(damage)
 
@@ -35,13 +50,13 @@ signal strike_finished(damage)
 
 func _ready() -> void:
 	Globals.ability_unlocked.connect(unlock_ability)
+	Globals.pause_game.connect(func(pause): get_tree().paused = pause)
 	#anim_player.animation_finished.connect(finish_strike)
 
 
 func _physics_process(delta: float) -> void:
 	position = get_global_mouse_position()
-	#current_grow = clamp(current_grow + (delta * growth_factor), 0 , max_grow)
-	#grow(current_grow)
+	Globals.power = calculate_power()
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -53,21 +68,19 @@ func _input(event: InputEvent) -> void:
 
 
 func finish_strike():
-	emit_signal("strike_finished", max(1.0, base_damage * (damage_factor / 1000)))
+	emit_signal("strike_finished", calculate_power())
 
-	scale = MIN_SCALE
-	current_grow = 0
 	anim_player.speed_scale = growth_speed
 	anim_player.queue("grow_%s" % growth_level)
 	
-func grow(current_grow: float):
-	#position = lerp(MIN_POS, MAX_POS, current_grow)
-	scale =  lerp(MIN_SCALE, MAX_SCALE, current_grow)
+
+func calculate_power():
+	return max(1.0, base_damage * (damage_factor / 1000))
 	
-	
-func unlock_ability(ability_name: String):
+func unlock_ability(ability_name: String,cost):
 	match ability_name:
 		"more_power":
+			old_scale += Vector2(0.2,0.2)
 			base_damage += 1
 		"increase_growth_level":
 			growth_level += 1

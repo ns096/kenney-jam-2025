@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://557bomkglvcp"]
+[gd_scene load_steps=7 format=3 uid="uid://557bomkglvcp"]
 
 [ext_resource type="Script" uid="uid://bt387iswkc0nb" path="res://scenes/ui/ability_container.gd" id="1_f3yc5"]
 [ext_resource type="Texture2D" uid="uid://dbg3hl6a8htu" path="res://assets/UI_pixel_adventure/Tiles/Small tiles/Thick outline/tile_0064.png" id="1_lfbgg"]
+[ext_resource type="Texture2D" uid="uid://n3x0im7vh4f" path="res://assets/UI_pixel_adventure/Tiles/Small tiles/Thick outline/tile_0069.png" id="2_kl2ne"]
+[ext_resource type="Texture2D" uid="uid://bfhlqk5xt2h4o" path="res://assets/UI_pixel_adventure/Tiles/Small tiles/Thick outline/tile_0074.png" id="3_ebqdj"]
+[ext_resource type="Texture2D" uid="uid://3eiqpbqq3a50" path="res://assets/UI_pixel_adventure/Tiles/Small tiles/Thick outline/tile_0075.png" id="5_qpeoh"]
+[ext_resource type="AudioStream" uid="uid://bpdcge3omback" path="res://assets/sounds/button.ogg" id="6_ebqdj"]
 
 [node name="AbilityContainer" type="MarginContainer"]
 theme_override_constants/margin_left = 3
@@ -9,6 +13,7 @@ theme_override_constants/margin_top = 3
 theme_override_constants/margin_right = 3
 theme_override_constants/margin_bottom = 3
 script = ExtResource("1_f3yc5")
+unlock_textures = Array[Texture2D]([ExtResource("2_kl2ne"), ExtResource("3_ebqdj")])
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 2
@@ -40,9 +45,20 @@ text = "[font_size=20 ][color=black]More Power[/color][/font_size]
 fit_content = true
 autowrap_mode = 0
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("5_qpeoh")
+
 [node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Buy
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ebqdj")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

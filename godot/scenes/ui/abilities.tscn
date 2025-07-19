@@ -23,6 +23,7 @@ ability_name = "more_power"
 title = "More power"
 cost = 2
 description = "Increase base damage"
+unlockable = 5
 
 [node name="AbilityContainer2" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
 layout_mode = 2
@@ -30,3 +31,4 @@ ability_name = "increase_growth_level"
 title = "Growth"
 cost = 5
 description = "Unlock your potential"
+unlockable = 3
