@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://557bomkglvcp"]
+
+[ext_resource type="Script" uid="uid://bt387iswkc0nb" path="res://scenes/ui/ability_container.gd" id="1_f3yc5"]
+[ext_resource type="Texture2D" uid="uid://dbg3hl6a8htu" path="res://assets/UI_pixel_adventure/Tiles/Small tiles/Thick outline/tile_0064.png" id="1_lfbgg"]
+
+[node name="AbilityContainer" type="MarginContainer"]
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+script = ExtResource("1_f3yc5")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_lfbgg")
+region_rect = Rect2(0, 0, 16, 16)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "[font_size=20 ][color=black]More Power[/color][/font_size]
+3 XP"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Buy
+"

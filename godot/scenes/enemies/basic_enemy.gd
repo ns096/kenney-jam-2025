@@ -33,7 +33,6 @@ func health_regen(factor: float):
 	$Health.value = current_health
 
 func spawn_next(anim):
-	print(anim)
 	setup_enemy(current_threat_level)
 	anim_player.queue("spawn")
 	anim_player.queue("threat_loop_%s" %current_threat_level)
