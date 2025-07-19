@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://gjf6f4intti3"]
+[gd_scene load_steps=13 format=3 uid="uid://gjf6f4intti3"]
 
 [ext_resource type="Script" uid="uid://cmeu2nv1jgo0o" path="res://scenes/arm/arm.gd" id="1_shvsc"]
 [ext_resource type="Texture2D" uid="uid://csqsa8xcvytj" path="res://assets/monster_builder/PNG/Default/arm_whiteB.png" id="2_hald4"]
+[ext_resource type="Texture2D" uid="uid://boo4k6dbcgdb5" path="res://assets/monster_builder/PNG/Default/arm_whiteC.png" id="3_k1ffn"]
+[ext_resource type="Texture2D" uid="uid://cyfvu7nxujgtf" path="res://assets/monster_builder/PNG/Default/arm_whiteE.png" id="4_fvybe"]
 
 [sub_resource type="Animation" id="Animation_ftcvs"]
 length = 0.001
@@ -102,6 +104,62 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_k1ffn"]
+resource_name = "grow_0"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.3, 0.3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:damage_factor")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1000.0]
+}
+
+[sub_resource type="Animation" id="Animation_notly"]
+resource_name = "grow_1"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 2),
+"transitions": PackedFloat32Array(1, 1.2, 3),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.5, 0.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:damage_factor")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.98),
+"transitions": PackedFloat32Array(1, 3, 3),
+"update": 0,
+"values": [100.0, 1000.0, 10000.0]
+}
+
 [sub_resource type="Animation" id="Animation_sbl86"]
 resource_name = "grow_2"
 length = 2.0
@@ -158,62 +216,6 @@ tracks/1/keys = {
 "values": [100.0, 1000.0, 2000.0]
 }
 
-[sub_resource type="Animation" id="Animation_k1ffn"]
-resource_name = "grow_0"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.06667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.3, 0.3)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:damage_factor")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1000.0]
-}
-
-[sub_resource type="Animation" id="Animation_notly"]
-resource_name = "grow_1"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("..:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1.2, 3),
-"update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.5, 0.5), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:damage_factor")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 1.98),
-"transitions": PackedFloat32Array(1, 3, 3),
-"update": 0,
-"values": [100.0, 1000.0, 2000.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1ffn"]
 _data = {
 &"RESET": SubResource("Animation_ftcvs"),
@@ -228,6 +230,7 @@ _data = {
 [node name="Arm" type="Node2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_shvsc")
+arm_sprites = Array[Texture2D]([ExtResource("2_hald4"), ExtResource("3_k1ffn"), ExtResource("4_fvybe")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite")

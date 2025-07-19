@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="MyGame"
+config/name="The strongest Click"
 run/main_scene="uid://cik30de5gaaah"
 config/features=PackedStringArray("4.4")
 config/icon="res://icon.svg"
@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 UserSettings="*res://settings/user_settings.gd"
+Globals="*res://globals_singleton.gd"
 
 [display]
 

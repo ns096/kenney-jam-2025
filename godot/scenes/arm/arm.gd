@@ -3,10 +3,10 @@ extends Node2D
 
 var max_grow = 1
 var current_grow = 0.0
-var growth_level = 0
 var growth_factor = 1./4.
 var growth_speed = 1
 
+@export var arm_sprites: Array[Texture2D] = []
 
 var MIN_POS = Vector2(30,3)
 var MIN_SCALE = Vector2(0.5,0.5)
@@ -17,13 +17,16 @@ var MAX_SCALE = Vector2(4,4)
 
 # TODO find good balancing
 var base_damage = 7.0
+var growth_level = 0
+
+var current_arm = 0
+
 # multiply and then scale back later from 500 to 5, because the animation player is fucky wucky
 @export_range(1.0,10000.0,0.5) var damage_factor = 1000.0
 
 signal strike_finished(damage)
 
 # TODO
-# animate on click
 # change sprite on upgrade
 # change color on dmg type 
 # visual feedback on wrong attack?
@@ -31,7 +34,7 @@ signal strike_finished(damage)
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	pass
+	Globals.ability_unlocked.connect(unlock_ability)
 	#anim_player.animation_finished.connect(finish_strike)
 
 
@@ -60,3 +63,15 @@ func finish_strike():
 func grow(current_grow: float):
 	#position = lerp(MIN_POS, MAX_POS, current_grow)
 	scale =  lerp(MIN_SCALE, MAX_SCALE, current_grow)
+	
+	
+func unlock_ability(ability_name: String):
+	match ability_name:
+		"more_power":
+			base_damage += 1
+		"increase_growth_level":
+			growth_level += 1
+		"bigger_arm":
+			current_arm += 1
+			base_damage += 5
+			$Sprite.texture = arm_sprites[current_arm]

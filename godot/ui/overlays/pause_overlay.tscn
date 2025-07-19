@@ -11,6 +11,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q2yda")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+
 [node name="VBoxContainer3" type="VBoxContainer" parent="."]
 layout_mode = 2
 

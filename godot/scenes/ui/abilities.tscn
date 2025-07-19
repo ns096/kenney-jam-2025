@@ -1,13 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://daw2yd3utme1b"]
+[gd_scene load_steps=3 format=3 uid="uid://daw2yd3utme1b"]
 
+[ext_resource type="Script" uid="uid://c3ymehs3bvss0" path="res://scenes/ui/ability_overlay.gd" id="1_fc4se"]
 [ext_resource type="PackedScene" uid="uid://557bomkglvcp" path="res://scenes/ui/ability_container.tscn" id="1_q3sjj"]
 
-[node name="Abilities" type="MarginContainer"]
+[node name="Ability_Overlay" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_fc4se")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -17,27 +19,14 @@ layout_mode = 2
 
 [node name="AbilityContainer" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
 layout_mode = 2
-ability_name = "more Power"
-cost = 3
-description = "harder better faster stronger"
+ability_name = "more_power"
+title = "More power"
+cost = 2
+description = "Increase base damage"
 
 [node name="AbilityContainer2" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
 layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 10
-
-[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-text = "XP: 0"
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 8
-text = "XP: 0"
-horizontal_alignment = 2
+ability_name = "increase_growth_level"
+title = "Growth"
+cost = 5
+description = "Unlock your potential"

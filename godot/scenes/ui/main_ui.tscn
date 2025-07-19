@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://wymn7xd0r72p"]
+[gd_scene load_steps=3 format=3 uid="uid://wymn7xd0r72p"]
 
 [ext_resource type="Script" uid="uid://cv3m6xi8mf2jt" path="res://scenes/ui/main_ui.gd" id="1_hnesk"]
+[ext_resource type="PackedScene" uid="uid://daw2yd3utme1b" path="res://scenes/ui/abilities.tscn" id="2_hcnxy"]
 
 [node name="MainUI" type="Control"]
 layout_mode = 3
@@ -20,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Enemy"
 
@@ -28,9 +30,13 @@ layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="Resources" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Ability_Overlay" parent="VBoxContainer" instance=ExtResource("2_hcnxy")]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Resources" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
 
 [node name="XP" type="Label" parent="VBoxContainer/Resources"]
 layout_mode = 2
@@ -65,3 +71,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Stats
 "
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Abilities" to="." method="_on_abilities_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Stats" to="." method="_on_stats_pressed"]

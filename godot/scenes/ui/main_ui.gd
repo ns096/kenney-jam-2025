@@ -7,6 +7,7 @@ var current_threat_level = 0
 
 signal threat_level_increased(current_threat_level)
 
+
 func receive_reward(reward_xp):
 	current_xp += reward_xp
 	all_time_xp += reward_xp
@@ -24,3 +25,9 @@ func increase_threat_level():
 	current_threat_level += 1
 	emit_signal("threat_level_increased", current_threat_level)
 	$VBoxContainer/Resources/Threat.text = "Threat: %s" %current_threat_level
+
+func _on_stats_pressed() -> void:
+	pass # Replace with function body.
+
+func _on_abilities_pressed() -> void:
+	$VBoxContainer/Ability_Overlay.visible = not $VBoxContainer/Ability_Overlay.visible
