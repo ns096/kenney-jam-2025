@@ -14,7 +14,7 @@ var MIN_SCALE = Vector2(0.5,0.5)
 var MAX_POS = Vector2(467.0,2.0)
 var MAX_SCALE = Vector2(4,4)
 
-var base_damage = 3.0
+var base_damage = 5.0
 # multiply and then scale back later from 500 to 5, because the animation player is fucky wucky
 @export_range(1.0,10000.0,0.5) var damage_factor = 1000.0
 

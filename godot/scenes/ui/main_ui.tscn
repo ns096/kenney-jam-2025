@@ -30,15 +30,22 @@ mouse_filter = 2
 
 [node name="Resources" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Gold" type="Label" parent="VBoxContainer/Resources"]
+[node name="XP" type="Label" parent="VBoxContainer/Resources"]
 layout_mode = 2
+size_flags_horizontal = 3
+text = "XP: 0"
 
-[node name="Strength" type="Label" parent="VBoxContainer/Resources"]
+[node name="Threat" type="Label" parent="VBoxContainer/Resources"]
 layout_mode = 2
+text = "Threat: 0"
 
 [node name="Power" type="Label" parent="VBoxContainer/Resources"]
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Power: 1"
+horizontal_alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

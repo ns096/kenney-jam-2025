@@ -11,7 +11,11 @@ func _ready() -> void:
 	
 	pause_overlay.game_exited.connect(_save_game)
 	
+	
+	# All events/signals get connected here
 	$Arm.strike_finished.connect($Enemy.hurt)
+	$Enemy.reward_received.connect($UI/MainUI.receive_reward)
+	$UI/MainUI.threat_level_increased.connect(func(threat): $Enemy.current_threat_level = threat )
 
 func _input(event) -> void:
 	if event.is_action_pressed("pause") and not pause_overlay.visible:
