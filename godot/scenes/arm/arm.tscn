@@ -47,6 +47,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:scale_anim")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sbl86"]
 playback_mode = 1
@@ -58,6 +70,7 @@ stream_1/stream = ExtResource("7_fw6fp")
 [sub_resource type="Animation" id="Animation_hald4"]
 resource_name = "basic_strike"
 length = 0.4
+capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -99,64 +112,18 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.259191)
 }
 tracks/2/use_blend = false
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aauom"]
-playback_mode = 1
-streams_count = 2
-stream_0/stream = ExtResource("6_notly")
-stream_1/stream = ExtResource("7_fw6fp")
-
-[sub_resource type="Animation" id="Animation_ldko3"]
-resource_name = "big_strike"
-length = 0.65
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.28093, 0.430564, 0.521628),
-"transitions": PackedFloat32Array(1, -0.574349, 0.517632, -0.574349, 0.517632),
-"update": 0,
-"values": [2.0253, 4.18879, 2.0253, 4.53786, 2.0253]
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/path = NodePath("..:scale_anim")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(494.56),
+"update": 2,
+"values": [Vector2(1, 1)]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.279153, 0.522852),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"strike"
-}, {
-"args": [],
-"method": &"finish_strike"
-}]
-}
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../basic_strike")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_sbl86")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": SubResource("AudioStreamRandomizer_aauom")
-}],
-"times": PackedFloat32Array(0.281604, 0.521628)
-}
-tracks/2/use_blend = false
 
 [sub_resource type="Animation" id="Animation_k1ffn"]
 resource_name = "grow_0"
@@ -311,11 +278,69 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aauom"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("6_notly")
+stream_1/stream = ExtResource("7_fw6fp")
+
+[sub_resource type="Animation" id="Animation_ldko3"]
+resource_name = "double_strike"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.28093, 0.430564, 0.521628),
+"transitions": PackedFloat32Array(1, -0.574349, 0.517632, -0.574349, 0.517632),
+"update": 0,
+"values": [2.0253, 4.18879, 2.0253, 4.53786, 2.0253]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.279153, 0.522852),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"strike"
+}, {
+"args": [],
+"method": &"finish_strike"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../basic_strike")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_sbl86")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_aauom")
+}],
+"times": PackedFloat32Array(0.281604, 0.521628)
+}
+tracks/2/use_blend = false
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1ffn"]
 _data = {
 &"RESET": SubResource("Animation_ftcvs"),
 &"basic_strike": SubResource("Animation_hald4"),
-&"big_strike": SubResource("Animation_ldko3"),
+&"double_strike": SubResource("Animation_ldko3"),
 &"grow_0": SubResource("Animation_k1ffn"),
 &"grow_1": SubResource("Animation_notly"),
 &"grow_2": SubResource("Animation_sbl86"),

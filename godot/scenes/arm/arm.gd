@@ -21,7 +21,7 @@ var old_scale = scale
 		scale_anim = val
 		scale = old_scale * scale_anim
 
-
+var double_attack_unlocked = false
 
 # TODO find good balancing
 @export var base_damage = 4.0 :
@@ -30,7 +30,6 @@ var old_scale = scale
 	set(val):
 		Globals.base_damage = val
 		base_damage = val
-		print("set base damage", base_damage)
 
 var growth_level = 0
 
@@ -63,8 +62,11 @@ func _input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed and not anim_player.current_animation.contains("strike"):
 			# anim_player.speed_scale = clamp(3.2 - (current_grow * 3), 0.05, 5)
 			anim_player.stop(true)
-			anim_player.play("basic_strike")
-			
+			if double_attack_unlocked:
+				anim_player.play("double_strike")
+			else:
+				anim_player.play("basic_strike")
+
 
 func strike():
 	emit_signal("strike_finished", calculate_power())
@@ -72,7 +74,7 @@ func strike():
 
 func finish_strike():
 	emit_signal("strike_finished", calculate_power())
-	anim_player.speed_scale = growth_speed
+	# anim_player.speed_scale = growth_speed
 	anim_player.queue("grow_%s" % growth_level)
 
 
@@ -91,4 +93,6 @@ func unlock_ability(ability_name: String,cost):
 			base_damage += 5
 			$Sprite.texture = arm_sprites[current_arm]
 		"increase_speed":
-			growth_speed += 0.3
+			anim_player.speed_scale += 0.2
+		"double_attack":
+			double_attack_unlocked = true

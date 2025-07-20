@@ -59,21 +59,21 @@ func setup_enemy(threat_level: int):
 			$SizeControl.scale = Vector2(19,19)
 			get_enemy_sprite(enemies_2)
 			set_health(randi_range(550,1000))
-			reward_xp = 8
-			regeneration = 10
+			reward_xp = 12
+			regeneration = 15
 		3:
 			$SizeControl.scale = Vector2(24,24)
 			get_enemy_sprite(enemies_3)
 			set_health(5000 + randi_range(0,10000))
 			reward_xp = 10
-			regeneration = 150
+			regeneration = 300
 
 func set_health(health):
 		max_health = health
 		current_health = max_health
-		$Health.value = max_health
 		$Health.max_value = max_health
-		$Health.scale.x = lerp(0.5, 2.0, clampf(health/500,0 ,2))
+		$Health.value = max_health
+		$Health.scale.x = lerp(0.5, 2.0, clampf(max_health/500,0 ,2))
 
 
 func get_enemy_sprite(enemy_sprites: Array[Texture2D]):

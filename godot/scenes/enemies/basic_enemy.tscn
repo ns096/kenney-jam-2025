@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://n50dl07nkkvc"]
+[gd_scene load_steps=26 format=3 uid="uid://n50dl07nkkvc"]
 
 [ext_resource type="Script" uid="uid://cccx7luepx8ye" path="res://scenes/enemies/basic_enemy.gd" id="1_8xi43"]
 [ext_resource type="Texture2D" uid="uid://bc1p2q6e7xk14" path="res://assets/1bit_roguelike/Tiles/Colored/tile_0020.png" id="2_3ld4s"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://v8fkrfr38dcb" path="res://assets/1bit_roguelike/Tiles/Colored/tile_0006.png" id="8_h8g6m"]
 [ext_resource type="Texture2D" uid="uid://bhg4wk7hwxcyb" path="res://assets/1bit_roguelike/Tiles/Colored/tile_0009.png" id="8_n4dni"]
 [ext_resource type="Texture2D" uid="uid://u16dsjtspv3r" path="res://assets/1bit_roguelike/Tiles/Colored/tile_0013.png" id="9_ojalv"]
+[ext_resource type="Texture2D" uid="uid://d3mnegmu4nkmp" path="res://assets/1bit_roguelike/Tiles/Colored/tile_0010.png" id="12_n4dni"]
 [ext_resource type="Texture2D" uid="uid://bvndra8bu4ffn" path="res://assets/1bit_roguelike/Tiles/Colored/tile_0106.png" id="12_qh2ad"]
 [ext_resource type="AudioStream" uid="uid://qlqn5t21jn8p" path="res://assets/sounds/death_1.ogg" id="13_h8g6m"]
 
@@ -392,7 +393,7 @@ script = ExtResource("1_8xi43")
 enemies_0 = Array[Texture2D]([ExtResource("2_3ld4s"), ExtResource("3_y18r1"), ExtResource("4_pksqs"), ExtResource("5_qh2ad")])
 enemies_1 = Array[Texture2D]([ExtResource("4_y18r1"), ExtResource("5_yo4tp"), ExtResource("8_n4dni")])
 enemies_2 = Array[Texture2D]([ExtResource("7_ox54m"), ExtResource("8_h8g6m")])
-enemies_3 = Array[Texture2D]([ExtResource("9_ojalv")])
+enemies_3 = Array[Texture2D]([ExtResource("9_ojalv"), ExtResource("12_n4dni")])
 
 [node name="Health" type="TextureProgressBar" parent="."]
 offset_left = -18.0

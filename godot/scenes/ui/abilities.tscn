@@ -43,8 +43,7 @@ unlockable = 3
 
 [node name="AbilityContainer4" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
 layout_mode = 2
-ability_name = "smash_attack"
-title = "Smash Attack"
-cost = 20
+ability_name = "double_attack"
+title = "Double Attack"
+cost = 30
 description = "Stronger"
-unlockable = 3
