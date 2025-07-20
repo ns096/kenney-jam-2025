@@ -23,6 +23,7 @@ ability_name = "more_power"
 title = "More power"
 cost = 2
 description = "Harder"
+full_text = "HARDER"
 unlockable = 5
 
 [node name="AbilityContainer2" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
@@ -31,6 +32,7 @@ ability_name = "increase_growth_level"
 title = "Growth"
 cost = 5
 description = "Better"
+full_text = "BETTER"
 unlockable = 3
 
 [node name="AbilityContainer3" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
@@ -39,6 +41,7 @@ ability_name = "increase_speed"
 title = "Speed"
 cost = 10
 description = "Faster"
+full_text = "FASTER"
 unlockable = 3
 
 [node name="AbilityContainer4" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
@@ -47,3 +50,4 @@ ability_name = "double_attack"
 title = "Double Attack"
 cost = 30
 description = "Stronger"
+full_text = "STRONGER"

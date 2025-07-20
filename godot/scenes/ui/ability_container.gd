@@ -4,6 +4,7 @@ extends MarginContainer
 @export var title = ""
 @export var cost = 0
 @export var description = ""
+@export var full_text = ""
 
 @export var cost_scaling = func(_cost): 
 	return _cost * 4
@@ -47,9 +48,13 @@ func update_text():
 		buy_color = "red"
 	else:
 		buy_color = "gold"
-	$MarginContainer/VBoxContainer/RichTextLabel.text = ("[font_size=14 ][color=black]%s[/color][/font_size]\n" % title) \
-	+ ("[font_size=12 ][color=black]%s[/color][/font_size]\n" % description) \
-	+ ("[font_size=12 ][color=%s]%s XP[/color][/font_size]\n" %[buy_color, cost])
+	
+	if unlocked == unlockable:
+		$MarginContainer/VBoxContainer/RichTextLabel.text = ("[font_size=20 ][color=black]%s[/color][/font_size]\n" % full_text)
+	else:
+		$MarginContainer/VBoxContainer/RichTextLabel.text = ("[font_size=14 ][color=black]%s[/color][/font_size]\n" % title) \
+		+ ("[font_size=12 ][color=black]%s[/color][/font_size]\n" % description) \
+		+ ("[font_size=12 ][color=%s]%s XP[/color][/font_size]\n" %[buy_color, cost])
 
 func _on_button_pressed() -> void:
 	$AudioStreamPlayer.pitch_scale = randf_range(0.9,1.1)

@@ -11,9 +11,10 @@ config_version=5
 [application]
 
 config/name="The strongest Click"
+config/description="A simple clicker game for the KenneyJam 2025, Theme is Power"
 run/main_scene="uid://cik30de5gaaah"
 config/features=PackedStringArray("4.4")
-config/icon="res://icon.svg"
+config/icon="uid://csr2yo5d823gv"
 
 [autoload]
 
