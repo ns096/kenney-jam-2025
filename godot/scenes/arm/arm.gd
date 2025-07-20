@@ -14,6 +14,7 @@ var MIN_SCALE = Vector2(0.5,0.5)
 var MAX_POS = Vector2(467.0,2.0)
 var MAX_SCALE = Vector2(4,4)
 
+@onready var particles = $Sprite/GPUParticles2D
 
 var old_scale = scale
 @export var scale_anim = Vector2.ONE:
@@ -71,6 +72,10 @@ func _input(event: InputEvent) -> void:
 func strike():
 	emit_signal("strike_finished", calculate_power())
 
+func strike_particles(amount):
+	var extra_particles = clampi(lerp(0.0, 15.0, calculate_power()/1000.0), 0,15)
+	particles.amount = amount + extra_particles
+	particles.restart()
 
 func finish_strike():
 	emit_signal("strike_finished", calculate_power())
@@ -79,12 +84,13 @@ func finish_strike():
 
 
 func calculate_power():
-	return max(1.0, base_damage * (damage_factor / 1000))
+	var damage = max(1.0, base_damage * (damage_factor / 1000))
+	return damage
 	
 func unlock_ability(ability_name: String,cost):
 	match ability_name:
 		"more_power":
-			old_scale += Vector2(0.2,0.2)
+			old_scale += Vector2(0.25,0.25)
 			base_damage += 3
 			base_damage *= 1.5 
 		"increase_growth_level":
