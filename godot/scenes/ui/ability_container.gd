@@ -43,9 +43,11 @@ func update_text():
 	+ ("%s XP\n" % cost) 
 
 func _on_button_pressed() -> void:
-	unlocked += 1
-	cost *= 2
 	$AudioStreamPlayer.pitch_scale = randf_range(0.9,1.1)
 	$AudioStreamPlayer.play()
 	Globals.emit_signal("ability_unlocked", ability_name, cost)
+
+	unlocked += 1
+	cost *= 4
 	update_text()
+	$MarginContainer/VBoxContainer/Button.disabled = true

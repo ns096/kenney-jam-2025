@@ -1,11 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://gjf6f4intti3"]
+[gd_scene load_steps=20 format=3 uid="uid://gjf6f4intti3"]
 
 [ext_resource type="Script" uid="uid://cmeu2nv1jgo0o" path="res://scenes/arm/arm.gd" id="1_shvsc"]
 [ext_resource type="Texture2D" uid="uid://csqsa8xcvytj" path="res://assets/monster_builder/PNG/Default/arm_whiteB.png" id="2_hald4"]
 [ext_resource type="Texture2D" uid="uid://boo4k6dbcgdb5" path="res://assets/monster_builder/PNG/Default/arm_whiteC.png" id="3_k1ffn"]
 [ext_resource type="Texture2D" uid="uid://cyfvu7nxujgtf" path="res://assets/monster_builder/PNG/Default/arm_whiteE.png" id="4_fvybe"]
-[ext_resource type="AudioStream" uid="uid://dfjxuqo1vaspl" path="res://assets/sounds/strike_1.ogg" id="5_sbl86"]
-[ext_resource type="AudioStream" uid="uid://7g85i38ei8iv" path="res://assets/sounds/strike_2.ogg" id="6_y6ys1"]
+[ext_resource type="Texture2D" uid="uid://c0c0vgeqo2lp6" path="res://assets/monster_builder/PNG/Default/arm_redE.png" id="5_notly"]
+[ext_resource type="AudioStream" uid="uid://b83ip8a6ew4in" path="res://assets/sounds/strike_hard_1.ogg" id="6_notly"]
+[ext_resource type="AudioStream" uid="uid://bde1kcg5oj68j" path="res://assets/sounds/strike_hard_2.ogg" id="7_fw6fp"]
+[ext_resource type="Texture2D" uid="uid://dwypolroece3j" path="res://assets/1bit_roguelike/Tiles/Colored/tile_0070.png" id="8_fw6fp"]
 
 [sub_resource type="Animation" id="Animation_ftcvs"]
 length = 0.001
@@ -33,12 +35,25 @@ tracks/1/keys = {
 "update": 1,
 "values": [1000.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_sbl86"]
-random_pitch = 1.15
+playback_mode = 1
+random_pitch = 1.1
 streams_count = 2
-stream_0/stream = ExtResource("5_sbl86")
-stream_1/stream = ExtResource("6_y6ys1")
+stream_0/stream = ExtResource("6_notly")
+stream_1/stream = ExtResource("7_fw6fp")
 
 [sub_resource type="Animation" id="Animation_hald4"]
 resource_name = "basic_strike"
@@ -84,36 +99,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0.259191)
 }
 tracks/2/use_blend = false
-
-[sub_resource type="Animation" id="Animation_fvybe"]
-resource_name = "big_strike"
-length = 0.2668
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.266667),
-"transitions": PackedFloat32Array(1, -0.574349, 0.517632),
-"update": 0,
-"values": [2.0253, 4.18879, 2.0253]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.26),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"finish_strike"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_k1ffn"]
 resource_name = "grow_0"
@@ -169,7 +154,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.5, 1.98),
 "transitions": PackedFloat32Array(1, 3, 3),
 "update": 0,
-"values": [1000.0, 3000.0, 8000.0]
+"values": [1000.0, 2000.0, 4000.0]
 }
 
 [sub_resource type="Animation" id="Animation_sbl86"]
@@ -183,9 +168,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1.02116, 2),
-"transitions": PackedFloat32Array(8, 3, 3),
+"transitions": PackedFloat32Array(1.93187, 1.13679, 3),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(5, 5)]
+"values": [Vector2(1, 1), Vector2(1.4, 1.4), Vector2(5, 5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -202,18 +187,18 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_y6ys1"]
 resource_name = "grow_3"
-length = 2.0
+length = 5.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("..:scale")
+tracks/0/path = NodePath("..:scale_anim")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.5, 2),
+"times": PackedFloat32Array(-0.00466507, 2.09246, 4.96699),
 "transitions": PackedFloat32Array(1, 1.2, 3),
 "update": 0,
-"values": [Vector2(0.3, 0.3), Vector2(0.5, 0.5), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(5, 5), Vector2(10, 10)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -222,27 +207,126 @@ tracks/1/path = NodePath("..:damage_factor")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.5, 1.98),
+"times": PackedFloat32Array(0, 2.09713, 4.97031),
 "transitions": PackedFloat32Array(1, 3, 3),
 "update": 0,
-"values": [100.0, 1000.0, 2000.0]
+"values": [1000.0, 15000.0, 30000.0]
 }
+
+[sub_resource type="Animation" id="Animation_fw6fp"]
+resource_name = "grow_4"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale_anim")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.00466507, 4.01914, 9.97175),
+"transitions": PackedFloat32Array(1, 1.2, 0.630672),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(5, 5), Vector2(15, 15)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:damage_factor")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.00048, 9.97845),
+"transitions": PackedFloat32Array(1, 1.35188, 1.06066),
+"update": 0,
+"values": [100.0, 30000.0, 500000.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Weapon:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0163009),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_aauom"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("6_notly")
+stream_1/stream = ExtResource("7_fw6fp")
+
+[sub_resource type="Animation" id="Animation_ldko3"]
+resource_name = "big_strike"
+length = 0.65
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.28093, 0.430564, 0.521628),
+"transitions": PackedFloat32Array(1, -0.574349, 0.517632, -0.574349, 0.517632),
+"update": 0,
+"values": [2.0253, 4.18879, 2.0253, 4.53786, 2.0253]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.279153, 0.522852),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"strike"
+}, {
+"args": [],
+"method": &"finish_strike"
+}]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../basic_strike")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_sbl86")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": SubResource("AudioStreamRandomizer_aauom")
+}],
+"times": PackedFloat32Array(0.281604, 0.521628)
+}
+tracks/2/use_blend = false
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k1ffn"]
 _data = {
 &"RESET": SubResource("Animation_ftcvs"),
 &"basic_strike": SubResource("Animation_hald4"),
-&"big_strike": SubResource("Animation_fvybe"),
+&"big_strike": SubResource("Animation_ldko3"),
 &"grow_0": SubResource("Animation_k1ffn"),
 &"grow_1": SubResource("Animation_notly"),
 &"grow_2": SubResource("Animation_sbl86"),
-&"grow_3": SubResource("Animation_y6ys1")
+&"grow_3": SubResource("Animation_y6ys1"),
+&"grow_4": SubResource("Animation_fw6fp")
 }
 
 [node name="Arm" type="Node2D"]
 scale = Vector2(0.3, 0.3)
 script = ExtResource("1_shvsc")
-arm_sprites = Array[Texture2D]([ExtResource("2_hald4"), ExtResource("3_k1ffn"), ExtResource("4_fvybe")])
+arm_sprites = Array[Texture2D]([ExtResource("2_hald4"), ExtResource("3_k1ffn"), ExtResource("4_fvybe"), ExtResource("5_notly")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite")
@@ -257,6 +341,14 @@ rotation = 2.0253
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_hald4")
 centered = false
+
+[node name="Weapon" type="Sprite2D" parent="Sprite"]
+visible = false
+z_index = -2
+position = Vector2(-22.1572, 140.676)
+rotation = 3.78911
+scale = Vector2(13, 13)
+texture = ExtResource("8_fw6fp")
 
 [node name="basic_strike" type="AudioStreamPlayer2D" parent="."]
 pitch_scale = 1.2

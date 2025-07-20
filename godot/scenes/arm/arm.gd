@@ -24,7 +24,7 @@ var old_scale = scale
 
 
 # TODO find good balancing
-@export var base_damage = 7.0 :
+@export var base_damage = 4.0 :
 	get:
 		return base_damage
 	set(val):
@@ -66,13 +66,15 @@ func _input(event: InputEvent) -> void:
 			anim_player.play("basic_strike")
 			
 
+func strike():
+	emit_signal("strike_finished", calculate_power())
+
 
 func finish_strike():
 	emit_signal("strike_finished", calculate_power())
-
 	anim_player.speed_scale = growth_speed
 	anim_player.queue("grow_%s" % growth_level)
-	
+
 
 func calculate_power():
 	return max(1.0, base_damage * (damage_factor / 1000))
@@ -81,10 +83,12 @@ func unlock_ability(ability_name: String,cost):
 	match ability_name:
 		"more_power":
 			old_scale += Vector2(0.2,0.2)
-			base_damage += 1
+			base_damage += 2
+			base_damage *= 1.5 
 		"increase_growth_level":
 			growth_level += 1
-		"bigger_arm":
 			current_arm += 1
 			base_damage += 5
 			$Sprite.texture = arm_sprites[current_arm]
+		"increase_speed":
+			growth_speed += 0.3

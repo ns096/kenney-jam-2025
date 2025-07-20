@@ -14,9 +14,9 @@ func receive_reward(reward_xp):
 	
 	if  current_threat_level == 0 and all_time_xp >= 10: 
 		increase_threat_level()
-	elif  current_threat_level == 1 and all_time_xp >= 50: 
+	elif  current_threat_level == 1 and all_time_xp >= 60: 
 		increase_threat_level()
-	elif  current_threat_level == 2 and all_time_xp >= 100: 
+	elif  current_threat_level == 2 and all_time_xp >= 150: 
 		increase_threat_level()
 		
 		

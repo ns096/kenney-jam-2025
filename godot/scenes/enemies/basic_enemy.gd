@@ -46,33 +46,34 @@ func setup_enemy(threat_level: int):
 		0:
 			$SizeControl.scale = Vector2(12,12)
 			get_enemy_sprite(enemies_0)
-			set_health(35)
+			set_health(35 + randi_range(0,20))
 			reward_xp = 3
 			regeneration = 0
 		1:
 			$SizeControl.scale = Vector2(15,15)
 			get_enemy_sprite(enemies_1)
-			set_health(50)
-			reward_xp = 6
+			set_health(90 + randi_range(0,40))
+			reward_xp = 4
 			regeneration = 3
 		2:
 			$SizeControl.scale = Vector2(19,19)
 			get_enemy_sprite(enemies_2)
-			set_health(max_health + 50)
-			reward_xp = 10
+			set_health(randi_range(550,1000))
+			reward_xp = 8
 			regeneration = 10
 		3:
 			$SizeControl.scale = Vector2(24,24)
 			get_enemy_sprite(enemies_3)
-			set_health(max_health + 100)
+			set_health(5000 + randi_range(0,10000))
 			reward_xp = 10
-			regeneration = 10
+			regeneration = 150
 
 func set_health(health):
 		max_health = health
 		current_health = max_health
 		$Health.value = max_health
 		$Health.max_value = max_health
+		$Health.scale.x = lerp(0.5, 2.0, clampf(health/500,0 ,2))
 
 
 func get_enemy_sprite(enemy_sprites: Array[Texture2D]):
@@ -82,6 +83,8 @@ func get_enemy_sprite(enemy_sprites: Array[Texture2D]):
 func hurt(damage: float):
 	
 	if anim_player.current_animation.contains("death") or anim_player.current_animation.contains("spawn"):
+		return
+	elif not hurtable:
 		return
 	
 	current_health -= damage

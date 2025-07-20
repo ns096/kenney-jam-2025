@@ -22,7 +22,7 @@ layout_mode = 2
 ability_name = "more_power"
 title = "More power"
 cost = 2
-description = "Increase base damage"
+description = "Harder"
 unlockable = 5
 
 [node name="AbilityContainer2" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
@@ -30,5 +30,21 @@ layout_mode = 2
 ability_name = "increase_growth_level"
 title = "Growth"
 cost = 5
-description = "Unlock your potential"
+description = "Better"
+unlockable = 3
+
+[node name="AbilityContainer3" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
+layout_mode = 2
+ability_name = "increase_speed"
+title = "Speed"
+cost = 10
+description = "Faster"
+unlockable = 3
+
+[node name="AbilityContainer4" parent="VBoxContainer/HFlowContainer" instance=ExtResource("1_q3sjj")]
+layout_mode = 2
+ability_name = "smash_attack"
+title = "Smash Attack"
+cost = 20
+description = "Stronger"
 unlockable = 3
