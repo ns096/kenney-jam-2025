@@ -62,6 +62,6 @@ func _on_button_pressed() -> void:
 	Globals.emit_signal("ability_unlocked", ability_name, cost)
 
 	unlocked += 1
-	cost *= 4
+	cost *= 3
 	update_text()
 	$MarginContainer/VBoxContainer/Button.disabled = true

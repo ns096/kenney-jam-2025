@@ -24,7 +24,7 @@ var old_scale = scale
 var double_attack_unlocked = false
 
 # TODO find good balancing
-@export var base_damage = 4.0 :
+@export var base_damage = 3.0 :
 	get:
 		return base_damage
 	set(val):
@@ -85,7 +85,7 @@ func unlock_ability(ability_name: String,cost):
 	match ability_name:
 		"more_power":
 			old_scale += Vector2(0.2,0.2)
-			base_damage += 2
+			base_damage += 3
 			base_damage *= 1.5 
 		"increase_growth_level":
 			growth_level += 1

@@ -65,7 +65,7 @@ func setup_enemy(threat_level: int):
 			$SizeControl.scale = Vector2(24,24)
 			get_enemy_sprite(enemies_3)
 			set_health(5000 + randi_range(0,10000))
-			reward_xp = 10
+			reward_xp = 30
 			regeneration = 300
 
 func set_health(health):
@@ -96,7 +96,6 @@ func hurt(damage: float):
 		anim_player.play("hurt",-1, 1.5)
 		anim_player.queue("threat_loop_%s" %current_threat_level)
 
-		
 
 func die():
 	anim_player.play("death")
