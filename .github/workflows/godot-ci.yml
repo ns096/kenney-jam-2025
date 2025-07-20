@@ -25,10 +25,12 @@ jobs:
         with:
           path: .godot/imported/
           key: import-assets-${{ runner.os }}-${{ github.sha }}
-      - name: Fix broken apt mirrors
+      - name: Use Uni Stuttgart mirror for apt
         run: |
-          sudo rm -f /etc/apt/apt-mirrors.txt
-          sudo sed -i 's|^deb mirror+file:/etc/apt/apt-mirrors.txt|deb http://archive.ubuntu.com/ubuntu|' /etc/apt/sources.list
+          UBUNTU_CODENAME=$(lsb_release -cs)
+          sudo sed -i "s|mirror+file:/etc/apt/apt-mirrors.txt|https://ftp.uni-stuttgart.de/ubuntu|g" /etc/apt/sources.list
+          sudo sed -i "s|http://archive.ubuntu.com/ubuntu|https://ftp.uni-stuttgart.de/ubuntu|g" /etc/apt/sources.list
+          sudo apt clean
           sudo apt update
       - name: install wine
         run: |
